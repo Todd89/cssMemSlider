@@ -12,9 +12,11 @@ body {
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #000;
   width: 90%;
-	height: 35vw;
+	height: 45vw;
 	margin: 2%  auto;
 	position: relative;
 	
@@ -40,9 +42,78 @@ body {
 	height: inherit;
 	position: absolute;
 	width: inherit;
+  height: inherit;
+	opacity: 0;
+	z-index: 0;
+	transform: scale(1.5);
+	transition: transform ease-in-out .5s, opacity ease-in-out .5s;
 }
 
-.slide1 { background-image: url(./img/1.jpg); }
-.slide2 { background-image: url(./img/2.jpg); }
-.slide3 { background-image: url(./img/3.jpg); }
-.slide4 { background-image: url(./img/4.jpg); }
+#slide1:checked ~ .slider > .slide1,
+#slide2:checked ~ .slider > .slide2,
+#slide3:checked ~ .slider > .slide3,
+#slide4:checked ~ .slider > .slide4 {
+	opacity: 1;
+	z-index: 1;
+	transform: scale(1);
+}
+
+.slide1 { background: url(./img/1.jpg)  0 0/100% 80% no-repeat; }
+.slide2 { background: url(./img/2.jpg)  0 0/100% 80% no-repeat; }
+.slide3 { background: url(./img/3.jpg)  0 0/100% 80% no-repeat; }
+.slide4 { background: url(./img/4.jpg)  0 0/100% 80% no-repeat; }
+
+.low-section {
+  display: flex;
+  height: 24%;
+}
+.text {
+  width: 50%;
+}
+.wrapper .controls {
+  border: 1px solid #000;
+	width: 50%;
+}
+
+.wrapper label {
+  margin: 7% 0 0 15%;
+  background-color: rgb(65, 49, 160);
+	cursor: pointer;
+	display: inline-block;
+	height: 2vw;
+  width: 5%;
+	position: relative;
+	border-radius: 50%;
+  transition: background ease-in-out .3s;
+}
+
+.wrapper label:after {
+	border: 3px solid rgb(65, 49, 160);
+  position: relative;
+	content: " ";
+	display: block;
+  width: 110%;
+	height: 2.5vw;
+	left: -14%;
+	top: -21%;
+	border-radius: 50%;
+}
+
+.wrapper label:hover, 
+#slide1:checked ~ .controls label:nth-of-type(1),
+#slide2:checked ~ .controls label:nth-of-type(2),
+#slide3:checked ~ .controls label:nth-of-type(3),
+#slide4:checked ~ .controls label:nth-of-type(4) {
+	background: #ddd;
+}
+
+.wrapper label:active:after, 
+#slide1:checked ~ .controls label:nth-of-type(1),
+#slide2:checked ~ .controls label:nth-of-type(2),
+#slide3:checked ~ .controls label:nth-of-type(3),
+#slide4:checked ~ .controls label:nth-of-type(4) {
+	border: 3px solid white;
+}
+
+
+
