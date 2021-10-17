@@ -115,5 +115,37 @@ body {
 	border: 3px solid white;
 }
 
+.text {
+  padding: 3% 0 0 5%;
+  font-size: 2rem;
+}
 
+.citates {
+  height: inherit;
+	position: absolute;
+	width: inherit;
+  height: inherit;
+	opacity: 0;
+	z-index: 0;
+	transition: opacity ease-in-out .5s;
+}
 
+#slide1:checked ~ .low-section > .text > .citates1,
+#slide2:checked ~ .low-section > .text > .citates2,
+#slide3:checked ~ .low-section > .text > .citates3,
+#slide4:checked ~ .low-section > .text > .citates4 {
+	opacity: 1;
+	z-index: 1;
+  animation-duration: 1s;
+  animation-name: showText;
+}
+
+@keyframes showText {
+  from {
+    transform: translateX(200%);
+  }
+
+  to {
+    left: 0;
+  }
+}
